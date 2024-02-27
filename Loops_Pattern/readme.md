@@ -11,8 +11,8 @@
 3. Only first & last rows are having continuous ```*```.
 4. In between first & last rows, first column and last column having ```*```.
 5. So we can write logic saying as
-    * **row is first or last print continuous** ```*```
-    * **column is first or last print single** ```*```
+    * **If row is first or last print continuous** ```*```
+    * **If column is first or last print single** ```*``` **else print spaces**
 
 # Code Logic
 ```
