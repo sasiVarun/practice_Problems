@@ -113,14 +113,14 @@ for(int row = 1; row<=rows; row++) {
 }
 </pre>
 ### Code Logic (Another way)
-```
+<pre>
 <span style="color:lightcoral"><strong> for(int row = rows; row>=1; row--) {</strong></span>
 	for(int column = 1; column<=row; column++) {
 		System.out.print("*");
 	}
 	    System.out.println();
 }
-```
+</pre>
 ---
 # **```PyramidPattern```**
 ### Pattern
