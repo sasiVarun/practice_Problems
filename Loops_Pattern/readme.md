@@ -13,7 +13,7 @@
 4. We know how many rows to be printed, so row count is clear.
 
 ### Code Logic
-```
+```java
 for(int row=1; row<=rows; row++) {
 	for(int column=1; column<=columns; column++) {
 	    System.out.print("*");
@@ -40,7 +40,7 @@ for(int row=1; row<=rows; row++) {
     * **column is first or last print single** ```*``` **rest all are spaces**
 
 # Code Logic
-```
+```java
 for(int row=1; row<=rows; row++) {
 	for(int column=1; column<=columns; column++) {
 		if(row == 1 || row == rows ||column == 1 || column == columns) {
@@ -77,7 +77,7 @@ for(int row=1; row<=rows; row++) {
 4. So we have to iterate on columns based on row count
 
 ### Code Logic
-```
+```java
 for(int row = 1; row<=rows; row++) {
 	for(int column = 1; column<=row; column++) {
 		System.out.print("*");
@@ -102,25 +102,25 @@ for(int row = 1; row<=rows; row++) {
 | Row-3 | ** | 2 we can write as **(5-3)**|
 | Row-4 | * | 1 we can write as **(5-4)**|
 
-* So we logic is **(rows + 1) - 1**
+* So logic is **(rows + 1) - 1**
 ### Code Logic
-<pre>
+```java
 for(int row = 1; row<=rows; row++) {
-	<span style="color:lightcoral"><strong> for(int column = 1; column<=((rows+1)-1); column++) {</strong></span>
+	for(int column = 1; column<=((rows+1)-1); column++) {
 		System.out.print("*");
 	}
 	    System.out.println();
 }
-</pre>
+```
 ### Code Logic (Another way)
-<pre>
-<span style="color:lightcoral"><strong> for(int row = rows; row>=1; row--) {</strong></span>
+```java
+for(int row = rows; row>=1; row--) {
 	for(int column = 1; column<=row; column++) {
 		System.out.print("*");
 	}
 	    System.out.println();
 }
-</pre>
+```
 ---
 # **```PyramidPattern```**
 ### Pattern
@@ -135,7 +135,7 @@ for(int row = 1; row<=rows; row++) {
 2. First we are having **n** number of rows.
 
 
-    | **Row Count** | **Spaces** | ```*``` | Logic |
+    | **Row Count** | **Number of Spaces** | **Number of** ```*``` | Logic |
     | ----------- | ----------- |----------- |----------- |
     | Row-1 | 3 spaces | 1 ```*```| (4-1) = 3 spaces; (2x1 - 1) = 1 ```*```|
     | Row-2 | 2 spaces | 3 ```*```| (4-2) = 2 spaces; (2x2 - 1) = 3 ```*```|
@@ -146,7 +146,7 @@ for(int row = 1; row<=rows; row++) {
 4. For ```*``` logic is (2xrow - 1)
 
 ### Code Logic
-```
+```java
 for(int row=1; row<=rows; row++) {
 	for(int column=1; column<=(rows-row); column++) {
 		System.out.print(" ");
@@ -167,8 +167,8 @@ for(int row=1; row<=rows; row++) {
    *  
 ```
 ### Code Logic
-<pre>
-<span style="color:lightcoral"><strong> for(int row=rows; row>=1; row--) {</strong></span>
+```java
+for(int row=rows; row>=1; row--) {
 	for(int column=1; column<=(rows-row); column++) {
 		System.out.print(" ");
 	}
@@ -177,4 +177,111 @@ for(int row=1; row<=rows; row++) {
 	}
 	System.out.println();
 }
-</pre>
+```
+---
+# **```NumericalRectangularPattern```**
+### Pattern
+```
+123456
+234561
+345612
+456123
+561234
+612345
+```
+### Key Points
+1. Lets break logic for above pattern.
+2. Each row is starting with row number
+
+<table>
+<tr>
+    <td>R1 -> 123456</td>
+</tr>
+<tr>
+    <td>R2 -> 234561</td>
+</tr>
+<tr>
+    <td>R3 -> 345612</td>
+</tr>
+<tr>
+    <td>R4 -> 456123</td>
+</tr>
+</table>
+
+* So from this we got logic as start from row number to number of rows.
+
+3. Next we are having numbers continuation, for this starting from 1 to row-1
+<table>
+<tr>
+    <td>R2 ->  234561 <strong>| (R2-1)<strong></td>
+</tr>
+<tr>
+    <td>R3 ->  345612 <strong>| (R3-1)</strong></td>
+</tr>
+<tr>
+    <td>R4 ->  456123 <strong>| (R4-1)</strong></td>
+</tr>
+</table>
+
+### Code Logic
+```java
+for(int row=1; row<=rows; row++) {
+	for(int column=row; column<=rows; column++) {
+		System.out.print(column);
+	}
+	
+	 for(int column=1; column<=row-1; column++) { 
+		System.out.print(column);
+	}
+	System.out.println();
+}
+```
+---
+# **```NumberPattern```**
+### Pattern
+```
+1212
+2121
+1212
+2121
+```
+### Key Points
+1. Lets break logic for above pattern.
+2. Considering above pattern in the form of matrix as shown below
+
+| <sup>R1</sup>[``` 1 ```]<sub>C1</sub> | <sup>R1</sup>[``` 2 ```]<sub>C2</sub> | <sup>R1</sup>[``` 1 ```]<sub>C3</sub> | <sup>R1</sup>[``` 2 ```]<sub>C4</sub> |
+|----------------------------|----------------------------|----------------------------|----------------------------|
+| <h5><sup>R2</sup>[``` 2 ```]<sub>C1</sub></h5> | <h5><sup>R2</sup>[``` 1 ```]<sub>C2</sub></h5> | <h5><sup>R2</sup>[``` 2 ```]<sub>C3</sub></h5> | <h5><sup>R2</sup>[``` 1 ```]<sub>C4</sub></h5> |
+| <h5><sup>R3</sup>[``` 1 ```]<sub>C1</sub></h5> | <h5><sup>R3</sup>[``` 2 ```]<sub>C2</sub></h5> | <h5><sup>R3</sup>[``` 1 ```]<sub>C3</sub></h5> | <h5><sup>R3</sup>[``` 2 ```]<sub>C4</sub></h5> |
+| <h5><sup>R4</sup>[``` 2 ```]<sub>C1</sub></h5> | <h5><sup>R4</sup>[``` 1 ```]<sub>C2</sub></h5> | <h5><sup>R4</sup>[``` 2 ```]<sub>C3</sub></h5> | <h5><sup>R4</sup>[``` 2 ```]<sub>C4</sub></h5> |
+
+3. If we observer when Row + Column count is even having value 1, else 2
+
+<table>
+<tr>
+    <td>Row-1, Col-1 -> 1 (1+1)</td>
+</tr>
+<tr>
+    <td>Row-1, Col-3 -> 1 (1+3)</td>
+</tr>
+<tr>
+    <td>Row-2, Col-2 -> 1 (2+2)</td>
+</tr>
+<tr>
+    <td>Row-2, Col-2-> 1 (2+4)</td>
+</tr>
+</table>
+</br>
+
+```java
+for(int row=1; row<=rows; row++) {
+	for(int column=1; column<=columns; column++) {
+	  if((row+column) % 2 == 0) {
+			System.out.print("1");
+		}else {
+			System.out.print("2");
+		}
+	}
+	System.out.println();
+}
+```
